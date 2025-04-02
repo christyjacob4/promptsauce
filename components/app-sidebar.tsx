@@ -15,7 +15,6 @@ import {
   SidebarRail,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { Input } from "@/components/ui/input"
 import {
   CuboidIcon as Cube,
   Image,
@@ -25,13 +24,14 @@ import {
   Wand2,
   Heart,
   ShieldCheck,
-  Home,
   PanelLeftClose,
   PanelLeft,
+  Zap,
 } from "lucide-react"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 const categories = [
   { id: "3d", name: "3D", icon: Cube },
@@ -51,6 +51,10 @@ const navSecondary = [
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const [activeFilters, setActiveFilters] = useState<string[]>([])
   const { state, toggleSidebar } = useSidebar()
+  const pathname = usePathname()
+  
+  // Only show categories on home page, not on bookmarks or admin pages
+  const showCategories = !pathname.includes('/bookmarks') && !pathname.includes('/admin')
 
   const toggleFilter = (id: string) => {
     setActiveFilters((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]))
@@ -58,46 +62,49 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <Sidebar variant="sidebar" collapsible="icon" className="border-r border-[#2A2A2A]" {...props}>
-      <SidebarHeader className="flex flex-col gap-4 p-4">
+      <SidebarHeader className="flex items-center justify-center p-4">
         <Link href="/" className="flex items-center">
           {state === "collapsed" ? (
-            <Home className="h-5 w-5" />
+            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#3F8CFF]">
+              <Zap className="h-5 w-5 text-white" />
+            </div>
           ) : (
-            <span className="text-2xl font-bold tracking-tight">PromptSauce</span>
+            <div className="flex items-center">
+              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#3F8CFF] mr-2">
+                <Zap className="h-5 w-5 text-white" />
+              </div>
+              <span className="text-xl font-bold tracking-tight">PromptSauce</span>
+            </div>
           )}
         </Link>
-        <div className={cn("w-full", state === "collapsed" ? "opacity-0" : "opacity-100")}>
-          <Input
-            placeholder="Filter prompts..."
-            className="w-full bg-[#1C1C1C] text-white placeholder:text-muted-foreground"
-          />
-        </div>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Categories</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {categories.map((category) => (
-                <SidebarMenuItem key={category.id}>
-                  <SidebarMenuButton
-                    isActive={activeFilters.includes(category.id)}
-                    onClick={() => toggleFilter(category.id)}
-                    className={cn(
-                      activeFilters.includes(category.id)
-                        ? "bg-[#3F8CFF] text-white hover:bg-[#3F8CFF]/90"
-                        : "hover:bg-[#2A2A2A]"
-                    )}
-                    tooltip={category.name}
-                  >
-                    <category.icon className="h-4 w-4" />
-                    <span>{category.name}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        {showCategories && (
+          <SidebarGroup>
+            <SidebarGroupLabel>Categories</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {categories.map((category) => (
+                  <SidebarMenuItem key={category.id}>
+                    <SidebarMenuButton
+                      isActive={activeFilters.includes(category.id)}
+                      onClick={() => toggleFilter(category.id)}
+                      className={cn(
+                        activeFilters.includes(category.id)
+                          ? "bg-[#3F8CFF] text-white hover:bg-[#3F8CFF]/90"
+                          : "hover:bg-[#2A2A2A]"
+                      )}
+                      tooltip={category.name}
+                    >
+                      <category.icon className="h-4 w-4" />
+                      <span>{category.name}</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        )}
       </SidebarContent>
 
       <SidebarFooter className="p-4">

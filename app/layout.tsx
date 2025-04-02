@@ -9,9 +9,53 @@ import { SiteFooter } from "@/components/site-footer"
 const geistMono = GeistMono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Prompt Sauce",
+  title: {
+    default: "Prompt Sauce",
+    template: "%s | Prompt Sauce"
+  },
   description: "Create and discover amazing AI prompts for your projects",
-  generator: 'v0.dev'
+  generator: 'v0.dev',
+  keywords: ["AI prompts", "prompt engineering", "AI images", "prompt gallery", "generative AI"],
+  authors: [{ name: "Christy Jacob", url: "https://x.com/christyjacob4" }],
+  creator: "Christy Jacob",
+  publisher: "Prompt Sauce",
+  metadataBase: new URL("https://promptsauce.com"),
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://promptsauce.com",
+    title: "Prompt Sauce",
+    description: "Create and discover amazing AI prompts for your projects",
+    siteName: "Prompt Sauce",
+    images: [
+      {
+        url: "https://promptsauce.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Prompt Sauce - Create and discover amazing AI prompts"
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Prompt Sauce",
+    description: "Create and discover amazing AI prompts for your projects",
+    creator: "@christyjacob4",
+    images: ["https://promptsauce.com/og-image.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 }
 
 export default function RootLayout({
