@@ -1,5 +1,4 @@
 import { ImageResponse } from 'next/og'
-import { Zap } from 'lucide-react'
 
 // Configuration for favicon
 export const faviconConfig = {
@@ -23,6 +22,8 @@ export const iconConfig = {
 
 // Common rendering function for icons
 export function renderIcon(size: number) {
+  const iconSize = Math.floor(size * 0.6);
+  
   return (
     <div
       style={{
@@ -35,7 +36,19 @@ export function renderIcon(size: number) {
         backgroundColor: '#3F8CFF',
       }}
     >
-      <Zap color="white" size={Math.floor(size * 0.6)} strokeWidth={2} />
+      {/* Raw SVG for Zap icon instead of the Lucide component */}
+      <svg
+        width={iconSize}
+        height={iconSize}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      </svg>
     </div>
   )
 }

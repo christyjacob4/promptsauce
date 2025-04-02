@@ -1,5 +1,4 @@
 import { ImageResponse } from 'next/og'
-import { Zap } from 'lucide-react'
 
 export const socialImageConfig = {
   size: {
@@ -46,7 +45,19 @@ export async function generateSocialImage() {
               marginRight: 32,
             }}
           >
-            <Zap color="white" size={70} strokeWidth={2} />
+            {/* Raw SVG for Zap icon instead of the Lucide component */}
+            <svg
+              width={70}
+              height={70}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+            </svg>
           </div>
           <div style={{ fontSize: 80, fontWeight: 'bold' }}>PromptSauce</div>
         </div>
