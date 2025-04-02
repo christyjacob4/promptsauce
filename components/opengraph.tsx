@@ -22,7 +22,7 @@ export async function generateSocialImage() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          fontFamily: '"Geist Mono", monospace',
+          fontFamily: 'ui-monospace, monospace',
           color: 'white',
         }}
       >
@@ -72,17 +72,6 @@ export async function generateSocialImage() {
         </div>
       </div>
     ),
-    {
-      ...socialImageConfig.size,
-      fonts: [
-        {
-          name: 'Geist Mono',
-          data: await fetch(
-            'https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;700&display=swap'
-          ).then((res) => res.arrayBuffer()),
-          style: 'normal',
-        },
-      ],
-    }
+    socialImageConfig.size
   )
 } 
