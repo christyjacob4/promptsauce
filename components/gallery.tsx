@@ -39,7 +39,7 @@ export function Gallery({ assets: initialAssets }: GalleryProps) {
   const loadAssets = async () => {
     setLoading(true)
     try {
-      const newAssets = getAssets(1)
+      const newAssets = await getAssets(1)
       setAssets(newAssets)
       setHasMore(newAssets.length === 12)
     } catch (error) {
@@ -55,7 +55,7 @@ export function Gallery({ assets: initialAssets }: GalleryProps) {
     setLoading(true)
     try {
       const nextPage = page + 1
-      const newAssets = getAssets(nextPage)
+      const newAssets = await getAssets(nextPage)
 
       if (newAssets.length === 0) {
         setHasMore(false)

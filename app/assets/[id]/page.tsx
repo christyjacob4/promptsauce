@@ -15,7 +15,7 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const asset = getAssetById(params.id)
+  const asset = await getAssetById(params.id)
   
   if (!asset) {
     return {
@@ -47,8 +47,8 @@ export async function generateMetadata(
   }
 }
 
-export default function AssetPage({ params }: Props) {
-  const asset = getAssetById(params.id)
+export default async function AssetPage({ params }: Props) {
+  const asset = await getAssetById(params.id)
 
   if (!asset) {
     return notFound()

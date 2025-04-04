@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function BookmarksPage() {
-  const bookmarkedAssets = getBookmarkedAssets()
+export default async function BookmarksPage() {
+  const bookmarkedAssets = await getBookmarkedAssets()
 
   return (
     <SidebarProvider defaultOpen={false}>
