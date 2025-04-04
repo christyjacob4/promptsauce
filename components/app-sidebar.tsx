@@ -27,6 +27,7 @@ import {
   PanelLeftClose,
   PanelLeft,
   Zap,
+  Upload,
 } from "lucide-react"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
@@ -44,6 +45,7 @@ const categories = [
 
 // Secondary navigation items for the sidebar footer
 const navSecondary = [
+  { name: "Submit", href: "/submit", icon: Upload },
   { name: "Bookmarks", href: "/bookmarks", icon: Heart },
   { name: "Admin", href: "/admin", icon: ShieldCheck },
 ]
