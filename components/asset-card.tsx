@@ -64,12 +64,12 @@ export function AssetCard({ asset }: AssetCardProps) {
         onMouseLeave={() => setIsHovered(false)}
       >
         <Link href={`/assets/${asset.id}`} className="block">
-          <div className="relative aspect-[4/3] w-full overflow-hidden">
+          <div className="relative aspect-square w-full overflow-hidden">
             <Image
               src={asset.imageUrl || "/placeholder.svg"}
               alt={asset.title}
               fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className="object-contain transition-transform duration-300 group-hover:scale-105"
             />
 
             <Button

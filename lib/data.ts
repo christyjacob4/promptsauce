@@ -126,6 +126,36 @@ const mockAssets: Asset[] = [
     createdAt: "March 27, 2025",
     isBookmarked: false,
   },
+  {
+    id: "13",
+    title: "Book Cover",
+    description: "A book cover",
+    prompt: "A high-quality mockup of a hardback book titled 'A Theology of the Family' placed on a dark charcoal background. The book cover is beige with an elegant, vintage line-art illustration. The design features a large arched frame enclosing symbolic imagery: a church, mountains, a cross, people representing family and faith, and an open Bible at the center. The artwork is monochromatic, using fine brown lines for a classic, engraved effect. Lighting is soft and directional, creating a subtle shadow to the right of the book.",
+    imageUrl: "/images/book-cover-1.png?height=600&width=400",
+    categories: ["3d", "minimal"],
+    createdAt: "March 27, 2025",
+    isBookmarked: false,
+  },
+  {
+    id: "14",
+    title: "e-Book Cover",
+    description: "A book cover",
+    prompt: "A modern digital report/book cover design with a dark gradient background transitioning from navy blue to teal. The title 'Analyze eSignature Software' is in bold white sans-serif font, with a subtitle 'Overview of Common Modern Electronic Signature Providers' in smaller text beneath. The top half features abstract geometric shapes: a green circle, green square, and translucent white triangle, layered with soft shadows and motion lines. Bottom-left includes the year '2022', and bottom-right shows a green Boltshift logo. The overall design is sleek, tech-oriented, and minimal.",
+    imageUrl: "/images/book-cover-2.png?height=600&width=400",
+    categories: ["3d", "minimal"],
+    createdAt: "March 27, 2025",
+    isBookmarked: false,
+  },
+  {
+    id: "15",
+    title: "Ramen Bowl",
+    description: "A ramen bowl",
+    prompt: "A fun and vibrant cartoon-style illustration of a red ramen bowl with noodles and toppings flying out. Ingredients include shrimp, sliced boiled egg, narutomaki (fish cake with pink swirl), mushrooms, and brown broth splashes. Two wooden chopsticks are sticking into the bowl. The background is a solid light yellow, with a soft shadow beneath the bowl, giving a sense of motion. The style is clean, bold, and outlined with thick lines for a playful, modern look.",
+    imageUrl: "/images/ramen-bowl.png?height=600&width=400",
+    categories: ["3d", "minimal"],
+    createdAt: "March 27, 2025",
+    isBookmarked: false,
+  },
 ]
 
 // Available categories for filtering
