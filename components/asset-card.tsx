@@ -69,6 +69,7 @@ export function AssetCard({ asset }: AssetCardProps) {
               src={asset.imageUrl || "/placeholder.svg"}
               alt={asset.title}
               fill
+              loading="lazy"
               className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
 
