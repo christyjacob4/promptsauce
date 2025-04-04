@@ -69,7 +69,7 @@ export function AssetCard({ asset }: AssetCardProps) {
               src={asset.imageUrl || "/placeholder.svg"}
               alt={asset.title}
               fill
-              className="object-contain transition-transform duration-300 group-hover:scale-105"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
 
             <Button
@@ -116,7 +116,8 @@ export function AssetCard({ asset }: AssetCardProps) {
 
           <div className="p-5">
             <h3 className="text-base font-medium">{asset.title}</h3>
-            <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground line-clamp-2">{asset.description}</p>
+            {/* <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground line-clamp-2">{asset.description}</p> */}
+            <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground line-clamp-2">{asset.prompt}</p>
 
             <div className="mt-3 flex flex-wrap gap-1.5">
               {asset.categories.map((category) => (
